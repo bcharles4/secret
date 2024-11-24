@@ -159,13 +159,11 @@
 
 .dash-con {
     width: 80%;
-    height: 100vh;
+    height: auto;
     background-color: #03001e;
     margin: 20px auto;
     border-radius: 10px;
-    padding: 20px; 
-
-
+    padding: 40px; 
 }
 
 

@@ -67,17 +67,21 @@
             <p class="text-lg text-gray-200 mb-4">Here you can manage events, view statistics, and more.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-gray-800 p-4 rounded-lg text-white">
-                    <h4 class="text-xl font-bold mb-2">Total Number of Events</h4>
+                    <h4 class="text-xl font-bold mb-2">Number of Joiners</h4>
+                    <p>0</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-white">
+                    <h4 class="text-xl font-bold mb-2">Total Expenses</h4>
+                    <p>0</p>
+                </div>
+                <div class="bg-gray-800 p-4 rounded-lg text-white">
+                    <h4 class="text-xl font-bold mb-2">Funds Needed</h4>
                     <p><?php echo $totalevents ?></p>
                 </div>
             </div>
 
-            <div class="dash-con" >
-
-
-            
-
-
+            <div class="dash-con bg-gray-800 " >
+                
                 <?php
                     $hasresult1 = $result1 && $result1->num_rows > 0;
                     while ($row = $result1->fetch_assoc()) {
@@ -118,7 +122,6 @@
                         echo '</div>';
                     }
                 ?>
-                
 
                 
 
@@ -134,8 +137,22 @@
 
     </div>
 
+    <div id="details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="relative bg-white p-8 rounded-lg max-w-lg w-full">
+            <button id="close-details-modal" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Event Details</h2>
+            <div id="modal-details-content">
+                <!-- Event Details will be inserted here -->
+            </div>
 
+            <div class="flex justify-between mt-6">
+                <button id="join-button" class="bg-gray-800 text-white p-2 rounded w-1/2 mr-2 font-bold">Join</button>
+                <button id="donate-button" class="bg-blue-600 text-white p-2 rounded w-1/2 ml-2 font-bold">Donate via GCash</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Expanded Image Popup -->
     <div  id="popup-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;" >
         <div class="relative bg-white p-4 rounded-lg">
             <button id="close-popup" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
@@ -149,16 +166,15 @@
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg relative">
             <button id="close-add-event-modal" class="absolute top-2 right-2 text-gray-700 text-2xl">&times;</button>
             <h2 class="text-2xl font-bold mb-4">Add New Event</h2>
-            <form id="add-event-form" method="POST" action="createevents.php" enctype="multipart/form-data">
-            <input type="hidden" name="User_ID" value="<?php echo $_SESSION['User_ID']; ?>">
-                <input type="text" name="event-name" id="event-name" placeholder="Event Name" class="w-full p-2 mb-4 border rounded" required />
-                <input type="text" name="event-location" id="event-location" placeholder="Location" class="w-full p-2 mb-4 border rounded" required />
-                <input type="text" name="event-phone" id="event-phone" placeholder="Phone Number" class="w-full p-2 mb-4 border rounded" required />
-                <input type="date" name="event-date" id="event-date" class="w-full p-2 mb-4 border rounded" required />
-                <input type="number" name="event-expenses" id="event-expenses" placeholder="Expenses" class="w-full p-2 mb-4 border rounded" required />
-                <input type="number" name="funds-needed" id="funds-needed" placeholder="Donation Goal" class="w-full p-2 mb-4 border rounded" required />
-                <input type="file" name="image" id="image">
-                <button type="submit" name="createevent" class="w-full p-3 bg-purple-700 text-white font-bold rounded">Add Event</button>
+            <form id="add-event-form">
+                <input type="text" id="event-name" placeholder="Event Name" class="w-full p-2 mb-4 border rounded" required />
+                <input type="text" id="event-location" placeholder="Location" class="w-full p-2 mb-4 border rounded" required />
+                <input type="text" id="event-phone" placeholder="Phone Number" class="w-full p-2 mb-4 border rounded" required />
+                <input type="file" id="event-file" name="file">
+                <input type="date" id="event-date" class="w-full p-2 mb-4 border rounded" required />
+                <input type="number" id="event-expenses" placeholder="Expenses" class="w-full p-2 mb-4 border rounded" required />
+                <input type="number" id="funds-needed" placeholder="Donation Goal" class="w-full p-2 mb-4 border rounded" required />
+                <button type="submit" class="w-full p-3 bg-purple-700 text-white font-bold rounded">Add Event</button>
             </form>
         </div>
     </div>
