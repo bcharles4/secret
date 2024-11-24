@@ -136,6 +136,13 @@
 
 }
 
+.dash-details:hover {
+    transform: scale(1.1);
+    transition: .7s ease-in-out;
+    
+    cursor: pointer;
+}
+
 
 .hidden {
     display: none;
