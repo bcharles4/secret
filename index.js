@@ -88,18 +88,33 @@ document.addEventListener("DOMContentLoaded", () => {
         popupModal.style.display = 'none';
     });
 
-    // Open details modal when clicking on the dash-details
-    document.querySelector('.dash-details').addEventListener('click', () => {
-        detailsModal.classList.remove('hidden');
-        detailsModal.style.display = 'flex';
-        // Populate dynamic content
-        document.getElementById('modal-details-content').innerHTML = `
-            <p><strong>Posted by:</strong> Jonas Mecayer</p>
-            <p><strong>Location:</strong> Brgy. 1, San Jose, Antique</p>
-            <p><strong>Joiners:</strong> Yes</p>
-            <p><strong>Donation Goal:</strong> Yes</p>
-            <p><strong>Amount Donated:</strong> Yes</p>
-        `;
+    // Select all the event elements
+    const eventElements = document.querySelectorAll('.dash-details');
+
+    // Add an event listener to each event element
+    eventElements.forEach(eventElement => {
+        eventElement.addEventListener('click', () => {
+            // Open the details modal
+            detailsModal.classList.remove('hidden');
+            detailsModal.style.display = 'flex';
+
+            // Get the data from the clicked event element
+            const username = eventElement.getAttribute('data-username');
+            const location = eventElement.getAttribute('data-location');
+            const joiners = eventElement.getAttribute('data-joiners');
+            const donationGoal = eventElement.getAttribute('data-donation-goal');
+            const totalDonation = eventElement.getAttribute('data-total-donation');
+            const bannerImage = eventElement.getAttribute('data-banner-image');
+
+            // Populate the modal content dynamically
+            document.getElementById('modal-details-content').innerHTML = `
+                <p><strong>Posted by:</strong> ${username}</p>
+                <p><strong>Location:</strong> ${location}</p>
+                <p><strong>Joiners:</strong> ${joiners}</p>
+                <p><strong>Donation Goal:</strong> ${donationGoal}</p>
+                <p><strong>Amount Donated:</strong> ${totalDonation}</p>
+            `;
+        });
     });
 
     // Close the details modal when clicking the close button
