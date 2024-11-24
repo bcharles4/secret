@@ -71,8 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeDetailsModal = document.getElementById('close-details-modal');
     const closePopup = document.getElementById('close-popup');
     const imgExpand = document.getElementById('img-expand');
-    const joinButton = document.querySelector("#details-modal button:nth-child(2)");
-    const donateButton = document.querySelector("#details-modal button:nth-child(3)");
+    const joinButton = document.getElementById('join-button');
+    const donateButton = document.getElementById('donate-button');
 
     // Event listener to open the modal when image is clicked
     imgExpand.addEventListener('click', () => {
@@ -117,9 +117,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Handle "Donate via GCash" button click
     donateButton.addEventListener('click', () => {
-        alert("Redirecting to GCash for donation...");
-        detailsModal.classList.add('hidden');
-        detailsModal.style.display = 'none';
+        // Replace modal content with GCash image
+        document.getElementById('modal-details-content').innerHTML = `
+            <img src="./images/qrcode.png" alt="GCash QR Code" style="width: 100%; height: auto;" />
+            <p style="text-align: center; margin-top: 10px;">Scan the QR code above to donate via GCash.</p>
+        `;
     });
 });
 
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     const donateButton = document.getElementById('donate-button');
+//     const imagePopupModal = document.getElementById('image-popup-modal');
+//     const popupImage = document.getElementById('popup-image');
+//     const closeImagePopup = document.getElementById('close-image-popup');
+
+//     // Show image popup when Donate button is clicked
+//     donateButton.addEventListener('click', () => {
+//         const imageUrl = './images/qrcode.png'; // Change this to the image you want to display
+//         popupImage.src = imageUrl; // Set the image source for the popup
+//         imagePopupModal.classList.remove('hidden'); // Show the popup
+//     });
+
+//     // Close the image popup when close button is clicked
+//     closeImagePopup.addEventListener('click', () => {
+//         imagePopupModal.classList.add('hidden'); // Hide the popup
+//     });
+
+//     // Optional: Close the popup when clicking outside the image content
+//     imagePopupModal.addEventListener('click', (e) => {
+//         if (e.target === imagePopupModal) {
+//             imagePopupModal.classList.add('hidden'); // Hide the popup if clicking outside
+//         }
+//     });
+// });

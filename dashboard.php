@@ -179,6 +179,14 @@
         </div>
     </div>
 
+
+    <div id="image-popup-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="relative bg-white p-4 rounded-lg">
+        <button id="close-image-popup" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+        <img id="popup-image" src="" alt="Popup Image" class="max-w-full max-h-screen rounded-lg" />
+    </div>
+</div>
+
     
 
     <script src="index.js"></script>
