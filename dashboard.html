@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Community Hub</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,29 +55,81 @@
             <h2 id="section-title" class="text-2xl font-bold">Dashboard</h2>
             <button id="add-event-button" class="p-2 bg-purple-700 rounded text-white">Add New Event</button>
         </div>
+
         <div id="content-container" class="p-6 flex-1 overflow-y-auto">
             <h2 class="text-3xl font-bold text-white mb-6">Welcome to Community Hub Dashboard</h2>
             <p class="text-lg text-gray-200 mb-4">Here you can manage events, view statistics, and more.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-gray-800 p-4 rounded-lg text-white">
-                    <h4 class="text-xl font-bold mb-2">Number of Events</h4>
-                    <p>${events.length}</p>
+                    <h4 class="text-xl font-bold mb-2">Number of Joiners</h4>
+                    <p>0</p>
                 </div>
                 <div class="bg-gray-800 p-4 rounded-lg text-white">
-                    <h4 class="text-xl font-bold mb-2">Participants</h4>
-                    <p>${events.reduce((sum, e) => sum + (e.participants || 0), 0)}</p>
+                    <h4 class="text-xl font-bold mb-2">Total Expenses</h4>
+                    <p>0</p>
                 </div>
                 <div class="bg-gray-800 p-4 rounded-lg text-white">
-                    <h4 class="text-xl font-bold mb-2">Donation Goal</h4>
-                    <p>₱${events.reduce((sum, e) => sum + (e.donationGoal || 0), 0).toFixed(2)}</p>
+                    <h4 class="text-xl font-bold mb-2">Funds Needed</h4>
+                    <p>0</p>
                 </div>
             </div>
+
+            <div class="dash-con" >
+                
+                <div class="dash-details">
+                    <h1>PLANTING</h1> 
+                <div class="details-dash">
+                <p>Posted by</p>
+                <p>Event Images</p>
+                <p>Location</p>
+                <p>Joiners </p>
+                <p>Donation Goal </p>
+                <p>Amount Donated </p>
+                </div>
+
+                <div class="class">
+                    <p>:</p>
+                    <p>:</p>
+                    <p>:</p>
+                    <p>:</p>
+                    <p>:</p>
+                    <p>:</p>
+                </div>
+
+
+                <div class="details-dash">
+                <p>Jonas Mecayer</p>
+                <img id="img-expand" src="./images/dd_bg.png" alt="Expandable Image" style="width: 50px; cursor: pointer;" />
+                <p> Brgy. 1, San Jose, Antique</p>
+                <p> yes </p>
+                <p> yes</p>
+                <p> yes</p>
+                </div>
+                </div>
+
+                
+
+
+    
+            </div>
+    
         
         </div>
+
 
         
 
     </div>
+
+
+
+    <div  id="popup-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;" >
+        <div class="relative bg-white p-4 rounded-lg">
+            <button id="close-popup" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+            <img id="popup-image" src="./images/dd_bg.png" alt="Expanded Image" class="max-w-full max-h-screen rounded-lg" />
+        </div>
+    </div>
+
 
     <!-- Add Event Modal -->
     <div id="add-event-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -86,6 +139,8 @@
             <form id="add-event-form">
                 <input type="text" id="event-name" placeholder="Event Name" class="w-full p-2 mb-4 border rounded" required />
                 <input type="text" id="event-location" placeholder="Location" class="w-full p-2 mb-4 border rounded" required />
+                <input type="text" id="event-phone" placeholder="Phone Number" class="w-full p-2 mb-4 border rounded" required />
+                <input type="file" id="event-file" name="file">
                 <input type="date" id="event-date" class="w-full p-2 mb-4 border rounded" required />
                 <input type="number" id="event-expenses" placeholder="Expenses" class="w-full p-2 mb-4 border rounded" required />
                 <input type="number" id="funds-needed" placeholder="Donation Goal" class="w-full p-2 mb-4 border rounded" required />

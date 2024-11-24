@@ -91,3 +91,75 @@
     
     border: 2px solid #fff;
 }
+
+
+.dash-con {
+    width: 80%;
+    height: 100vh;
+    background-color: #03001e;
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 20px; 
+
+
+}
+
+
+.dash-details {
+    background-color: #03001e;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.dash-details h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.dash-details p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: white
+}
+
+.details-dash img{
+
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+}
+
+
+.hidden {
+    display: none;
+}
+
+#popup-modal {
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+}
+
+#popup-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+
