@@ -1,3 +1,7 @@
+document.getElementById('add-event-button').addEventListener('click', () => {
+    document.getElementById('add-event-modal').classList.toggle('hidden');
+});
+
 // Select the modal and buttons
 const addEventButton = document.getElementById('add-event-button');
 const addEventModal = document.getElementById('add-event-modal');
@@ -45,3 +49,77 @@ document.addEventListener("DOMContentLoaded", () => {
     popupModal.classList.add('hidden'); // Ensure the popup modal is hidden on page load
     popupModal.style.display = 'none'; // Ensure popup modal is hidden
 });
+
+
+// Select elements
+const dashDetails = document.querySelector('.dash-details');
+const detailsModal = document.getElementById('details-modal');
+const closeDetailsModal = document.getElementById('close-details-modal');
+const modalContent = document.getElementById('modal-details-content');
+const joinButton = document.getElementById('join-button');
+const donateButton = document.getElementById('donate-button');
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Select the modal and buttons
+    const detailsModal = document.getElementById('details-modal');
+    const popupModal = document.getElementById('popup-modal');
+    const closeDetailsModal = document.getElementById('close-details-modal');
+    const closePopup = document.getElementById('close-popup');
+    const imgExpand = document.getElementById('img-expand');
+    const joinButton = document.querySelector("#details-modal button:nth-child(2)");
+    const donateButton = document.querySelector("#details-modal button:nth-child(3)");
+
+    // Event listener to open the modal when image is clicked
+    imgExpand.addEventListener('click', () => {
+        const imgSrc = imgExpand.src; // Get the image source
+        document.getElementById('popup-image').src = imgSrc; // Set it in the popup
+        popupModal.classList.remove('hidden');
+        popupModal.style.display = 'flex';
+    });
+
+    // Event listener to close the popup modal
+    closePopup.addEventListener('click', () => {
+        popupModal.classList.add('hidden');
+        popupModal.style.display = 'none';
+    });
+
+    // Open details modal when clicking on the dash-details
+    document.querySelector('.dash-details').addEventListener('click', () => {
+        detailsModal.classList.remove('hidden');
+        detailsModal.style.display = 'flex';
+        // Populate dynamic content
+        document.getElementById('modal-details-content').innerHTML = `
+            <p><strong>Posted by:</strong> Jonas Mecayer</p>
+            <p><strong>Location:</strong> Brgy. 1, San Jose, Antique</p>
+            <p><strong>Joiners:</strong> Yes</p>
+            <p><strong>Donation Goal:</strong> Yes</p>
+            <p><strong>Amount Donated:</strong> Yes</p>
+        `;
+    });
+
+    // Close the details modal when clicking the close button
+    closeDetailsModal.addEventListener('click', () => {
+        detailsModal.classList.add('hidden');
+        detailsModal.style.display = 'none';
+    });
+
+    // Handle "Join" button click
+    joinButton.addEventListener('click', () => {
+        alert("You have joined the event!");
+        detailsModal.classList.add('hidden');
+        detailsModal.style.display = 'none';
+    });
+
+    // Handle "Donate via GCash" button click
+    donateButton.addEventListener('click', () => {
+        alert("Redirecting to GCash for donation...");
+        detailsModal.classList.add('hidden');
+        detailsModal.style.display = 'none';
+    });
+});
+

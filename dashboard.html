@@ -74,9 +74,9 @@
                 </div>
             </div>
 
-            <div class="dash-con " >
+            <div class="dash-con bg-gray-800" >
                 
-                <div class="dash-details bg-gray-800">
+                <div class="dash-details ">
                     <h1>PLANTING</h1> 
                 <div class="details-dash">
                 <p>Posted by</p>
@@ -121,8 +121,22 @@
 
     </div>
 
+    <div id="details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="relative bg-white p-8 rounded-lg max-w-lg w-full">
+            <button id="close-details-modal" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
+            <h2 class="text-2xl font-bold mb-4">Event Details</h2>
+            <div id="modal-details-content">
+                <!-- Event Details will be inserted here -->
+            </div>
 
+            <div class="flex justify-between mt-6">
+                <button id="join-button" class="bg-gray-800 text-white p-2 rounded w-1/2 mr-2 font-bold">Join</button>
+                <button id="donate-button" class="bg-blue-600 text-white p-2 rounded w-1/2 ml-2 font-bold">Donate via GCash</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Expanded Image Popup -->
     <div  id="popup-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;" >
         <div class="relative bg-white p-4 rounded-lg">
             <button id="close-popup" class="absolute top-2 right-2 text-gray-700 text-xl">&times;</button>
